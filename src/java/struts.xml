@@ -1,0 +1,240 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default" namespace="/" >
+        <!-- action-->
+        <action name="">
+            <result>login.jsp</result>
+        </action>
+        <action name="try">
+            <result>login.jsp</result>
+        </action>
+        <action name="LogOutAction" class="phu.actions.LogOutAction" >
+            <result name="success">login.jsp</result>
+            
+        </action>
+        <action name="login" class="phu.actions.LoginAction" >
+            <result name="WeaponEngineerLoginSuccess">weapon.jsp</result>
+            <result name="PilotLoginSuccess" >PilotMainPage.jsp</result>
+            <result name="ReserveLoginSuccess" >reserve.html</result>
+            <result name="CommanderLoginSuccess">MainPage.jsp</result>
+            <result name="fail"  >login.jsp</result>
+        </action>
+        <!-- action-->
+        
+        <!--pilot action-->
+        
+        <action name="SearchPilotAction" class="phu.actions.Pilot.SearchPilotAction">
+            <result name="success">pilot.jsp</result>
+        </action>
+        <action name="SearchPilotAction2" class="phu.actions.Pilot.SearchPilotAction2">
+            <result name="success">updatePilot.jsp</result>
+        </action>
+        <action name="SearchPilotForMissionAction" class="phu.actions.Pilot.SearchPilotForMissionAction" >
+            <result name="success">addPilotToMission.jsp</result>
+        </action> 
+        <action name="DeletePilotAction" class="phu.actions.Pilot.DeletePilotAction">
+            <result name="success" type="redirectAction" >
+                <param name="actionName">SearchPilotAction</param>
+                <param name="searchPilotFollow">${searchPilotFollow}</param>
+                <param name="searchPilot">${searchPilot}</param>
+            </result>
+            <result name ="fail">pilot.jsp</result>
+        </action>
+        <action name="PilotUpdateAction" class="phu.actions.Pilot.PilotUpdateAction">
+            <result name="success" type="redirectAction" >
+                <param name="actionName">SearchPilotAction</param>
+                <param name="searchPilotFollow">${searchPilotFollow}</param>
+                <param name="searchPilot">${searchPilot}</param>
+            </result>
+            <result name ="fail">pilot.jsp</result>
+        </action>
+        <!--pilot action-->
+        <!--Soidler action-->
+        <action name="SearchSoidlerAction" class="phu.actions.Soidler.SearchSoidlerAction">
+            <result name="success">soidler.jsp</result>
+        </action>
+        <action name="SearchSoidlerInfo" class="phu.actions.Soidler.SearchSoidlerInfoAction">
+            <result name="success">updateSoidler.jsp</result>
+        </action>
+        
+        <action name="DeleteSoidlerAction" class="phu.actions.Soidler.DeleteSoidlerAction">
+            <result name="success" type="redirectAction" >
+                <param name="actionName">SearchSoidlerAction</param>
+                <param name="searchSoidlerFollow">${searchSoidlerFollow}</param>
+                <param name="searchSoidler">${searchSoidler}</param>
+            </result>
+            <result name ="fail">soidler.jsp</result>
+        </action>
+        
+        <action name="SoidlerUpdateAction" class="phu.actions.Soidler.SoidlerUpdateAction">
+            <result name="success"  >
+                soidler.jsp
+            </result>
+            <result name ="fail">soidler.jsp</result>
+        </action>
+        <action name="AddSoidlerAction" class="phu.actions.Soidler.AddSoidlerAction">
+            <result name="success">
+                soidler.jsp
+            </result>
+            <result name ="fail">addSoidler.jsp</result>
+            
+        </action>
+        <!--Soidler action-->
+        <!-- gears action -->
+        <action name="SearchGearAction" class="phu.actions.gears.SearchGearAction">
+            <result name="success">gear.jsp</result>
+        </action>
+        <action name="SearchGearAction2" class="phu.actions.gears.SearchGearAction2">
+            <result name="success">pilotChooseGear.jsp</result>
+        </action>
+        <action name="SearchGearAction3" class="phu.actions.gears.SearchGearAction3">
+            <result name="success">weaponForPilot.jsp</result>
+        </action>
+        <action name="SearchGearAction4" class="phu.actions.gears.SearchGearAction4">
+            <result name="success">updateGear.jsp</result>
+        </action>
+        <action name="RemoveGearAction" class="phu.actions.gears.RemoveGearAction">
+            <result name="success" type="redirectAction" >
+                <param name="actionName">SearchGearAction</param>
+                <param name="searchGearFollow">${searchGearFollow}</param>
+                <param name="searchGear">${searchGear}</param>
+            </result>
+            <result name ="fail">login.jsp</result>
+        </action>
+        
+        <action name="UpdateGearAction" class="phu.actions.gears.UpdateGearAction">
+            <result name="success" type="redirectAction" >
+                <param name="actionName">SearchGearAction</param>
+                <param name="searchGearFollow">${searchGearFollow}</param>
+                <param name="searchGear">${searchGear}</param>
+            </result>
+            <result name ="fail">gear.jsp</result>
+        </action>
+        
+        <action name="AddGearAction" class="phu.actions.gears.AddGearAction">
+            <result name="success">
+                gear.jsp
+            </result>
+            <result name ="fail">gear.jsp</result>
+            
+        </action>
+        <action name="SoidlerChooseGearAction" class="phu.actions.gears.SoidlerChooseGearAction">
+            <result name="success" >
+               login.jsp
+            </result>
+            <result name ="fail">pilotChooseGear.jsp</result>
+            
+        </action>
+         <action name="SoidlerRemoveWeaponFromGundam" class="phu.actions.Weapon.SoidlerRemoveWeaponFromGundam">
+            <result name="success" type="redirectAction" >
+                <param name="actionName">modify</param>
+                <param name="gearCode">${gearCode}</param>
+            </result>
+            <result name ="fail">PilotMainPage.jsp</result>
+            
+        </action>
+        <action name="SoidlerRemoveGear" class="phu.actions.gears.SoidlerRemoveGear">
+            <result name="success"  >
+                login.jsp
+            </result>
+            <result name ="fail">PilotMainPage.jsp</result>
+            
+        </action>
+        <action name="modify" class="phu.actions.gears.SearchGearWeapon">
+            <result name="success" >
+                ModifyWeapon.jsp
+            </result>
+            <result name ="fail">PilotMainPage.jsp</result>
+            
+        </action>
+        <!-- gears action -->
+        <!--Weapon Engineer -->
+        <action name="searchWeapon" class="phu.actions.Weapon.SearchWeaponAction" >
+            <result name="success">weapon.jsp</result>
+        </action> 
+        <action name="searchWeapon2" class="phu.actions.Weapon.SearchWeaponAction2" >
+            <result name="success">weaponForPilot.jsp</result>
+        </action> 
+        <action name="DeleteWeaponAction" class="phu.actions.Weapon.DeleteWeaponAction">
+            <result name="success" type="redirectAction" >
+                <param name="actionName">searchWeapon</param>
+                <param name="searchWeaponType">${searchWeaponType}</param>
+                <param name="searchWeapon">${searchWeapon}</param>
+            </result>
+            <result name ="fail">weapon.jsp</result>
+        </action>
+        <action name="WeaponUpdate" class="phu.actions.Weapon.WeaponUpdateAction">
+            <result name="success" type="redirectAction" >
+                <param name="actionName">searchWeapon</param>
+                <param name="searchWeaponType">${searchWeaponType}</param>
+                <param name="searchWeapon">${searchWeapon}</param>
+            </result>
+            <result name ="fail">weapon.jsp</result>
+        </action>
+        <action name="AddWeaponToGear" class="phu.actions.Weapon.AddWeaponToGear">
+            <result name="success" type="redirectAction" >
+                <param name="actionName">searchWeapon2</param>
+                <param name="searchWeaponType">${searchWeaponType}</param>
+                <param name="searchWeapon">${searchWeapon}</param>
+            </result>
+            <result name ="fail">weaponForPilot.jsp</result>
+        </action>
+        <action name="AddWeaponAction" class="phu.actions.Weapon.AddWeaponAction">
+            <result name="success">
+                weapon.jsp
+            </result>
+            <result name ="fail">addWeapon.jsp</result>
+            
+        </action>
+        <!--Weapon Engineer-->
+        <!-- Mission Action -->
+        <action name="searchMission" class="phu.actions.mission.SearchMissionAction" >
+            <result name="success">mission.jsp</result>
+        </action> 
+        <action name="searchMission2" class="phu.actions.mission.SearchMissionAction2" >
+            <result name="success">UpdateMission.jsp</result>
+        </action> 
+        <action name="DeleteMissionAction" class="phu.actions.mission.DeleteMissionAction">
+            <result name="success" type="redirectAction" >
+                <param name="actionName">searchMission</param>
+                <param name="searchMissionBy">${searchMissionBy}</param>
+                <param name="searchMission">${searchMission}</param>
+            </result>
+            <result name ="fail">mission.jsp</result>
+        </action>
+        <action name="UpdateMissionAction" class="phu.actions.mission.UpdateMissionAction">
+            <result name="success"  >
+                mission.jsp
+            </result>
+            <result name ="fail">UpdateMission.jsp</result>
+        </action>
+        
+        <action name="AddMissionAction" class="phu.actions.mission.AddMissionAction">
+            <result name="success">
+                mission.jsp
+            </result>
+            <result name ="fail">addMission.jsp</result>
+            
+        </action>
+        <action name="searchMissionDetail" class="phu.actions.mission.SearchMissionDetailAction" >
+            <result name="success">MissionDetail.jsp</result>
+        </action>
+        <action name="RemovePilotFromMission" class="phu.actions.mission.RemovePilotFromMission">
+            <result name="success" type="redirectAction"  >
+                <param name="actionName" >searchMissionDetail</param>
+            </result>
+            <result name ="fail">MissionDetail.jsp</result>
+        </action>
+        <action name="AddPilotToMissionAction" class="phu.actions.mission.AddPilotToMissionAction">
+            <result name="success"  >
+                addPilotToMission.jsp
+            </result>
+            <result name ="fail">addPilotToMission.jsp</result>
+        </action>
+        <!-- Mission Action -->
+    </package>
+</struts>
